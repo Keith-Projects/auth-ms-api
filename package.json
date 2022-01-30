@@ -1,0 +1,87 @@
+{
+  "name": "auth-ms-api",
+  "version": "1.0.0",
+  "description": "Auth micro service.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "clean": "rm -rf node_modules package-lock.json",
+    "lint": "tslint --project . --format checkstyle --force> checkstyle-result.xml",
+    "restart": "npm run build && npm start",
+    "start": "node dist/server.js live",
+    "test": "nyc --reporter=cobertura --reporter=html ts-mocha --timeout 10000 -p tsconfig.json ./test/routes/*.test.ts --exit",
+    "version": "node -e 'console.log(`${process.env.npm_package_version}`);'"
+  },
+  "dependencies": {
+    "@types/bull": "^3.14.4",
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.16.1",
+    "@types/node": "^11.13.14",
+    "@types/uuid": "^3.4.7",
+    "aws-sdk": "^2.740.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^4.1.0",
+    "log4js-cloudwatch-appender": "^1.1.0",
+    "typescript": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.11.4",
+    "@babel/preset-env": "7.11.0",
+    "@babel/preset-typescript": "7.10.4",
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/mocha": "^8.0.3",
+    "@types/supertest": "^2.0.10",
+    "apidoc": "^0.17.7",
+    "assert": "^1.4.1",
+    "axios": "^0.17.1",
+    "babel-jest": "^26.3.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "handlebars": "^4.5.0",
+    "jest": "^26.4.2",
+    "mocha": "^7.2.0",
+    "mongodb-memory-server": "^6.6.6",
+    "nyc": "^15.1.0",
+    "source-map-support": "^0.5.19",
+    "supertest": "^4.0.2",
+    "ts-mocha": "^7.0.0",
+    "ts-node": "^9.0.0",
+    "tslint": "^5.20.1",
+    "typedoc": "^0.14.2"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "test/*"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html",
+      "spec"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keith-Projects/auth-ms-api.git"
+  },
+  "author": "Keith Blackwelder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Keith-Projects/auth-ms-api/issues"
+  },
+  "homepage": "https://github.com/Keith-Projects/auth-ms-api#readme"
+}
