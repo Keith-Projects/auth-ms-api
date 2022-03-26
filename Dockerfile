@@ -1,4 +1,4 @@
-FROM node:17.4
+FROM node:16.4
 LABEL Keith Blackwelder"kblackwelder08@gmail.com"
 
 ARG APP=auth-ms-api
@@ -14,7 +14,6 @@ RUN apt-get -y update && apt-get -y --no-install-recommends install \
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
 RUN ./aws/install
-
 
 WORKDIR /app
 

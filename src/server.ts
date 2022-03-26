@@ -10,6 +10,13 @@ const port = config.port;
 
 export const logger = log4js.getLogger('[Server]');
 
+app.get('/', (req, res) => {
+    if (!req.header('apikey')) {
+        logger.error('missing apikey in request header');
+        return res.status(401).send('unauthorized');
+    }
+});
+
 app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
