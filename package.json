@@ -9,7 +9,7 @@
     "lint": "tslint --project . --format checkstyle --force> checkstyle-result.xml",
     "restart": "npm run build && npm start",
     "start": "node dist/server.js live",
-    "test": "nyc --reporter=cobertura --reporter=html ts-mocha --timeout 10000 -p tsconfig.json ./test/routes/*.test.ts --exit",
+    "test": "mocha --timeout 10000 -p tsconfig.json ./test/routes/*.test.ts --exit",
     "version": "node -e 'console.log(`${process.env.npm_package_version}`);'"
   },
   "dependencies": {
@@ -22,9 +22,11 @@
     "bcrypt": "^5.0.0",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
+    "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^4.1.0",
     "log4js-cloudwatch-appender": "^1.1.0",
+    "postgres": "^1.0.2",
     "typescript": "^3.3.3"
   },
   "devDependencies": {
@@ -44,35 +46,12 @@
     "jest": "^26.4.2",
     "mocha": "^7.2.0",
     "mongodb-memory-server": "^6.6.6",
-    "nyc": "^15.1.0",
     "source-map-support": "^0.5.19",
     "supertest": "^4.0.2",
     "ts-mocha": "^7.0.0",
-    "ts-node": "^9.0.0",
+    "ts-node": "^9.1.1",
     "tslint": "^5.20.1",
     "typedoc": "^0.14.2"
-  },
-  "nyc": {
-    "all": true,
-    "include": [
-      "src"
-    ],
-    "exclude": [
-      "test/*"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "text-summary",
-      "html",
-      "spec"
-    ],
-    "sourceMap": true,
-    "instrument": true
   },
   "repository": {
     "type": "git",
