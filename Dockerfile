@@ -17,8 +17,11 @@ RUN ./aws/install
 
 WORKDIR /app
 
-EXPOSE 9001
+COPY package.json ./
+RUN npm install
+COPY . .
 
-ADD docker/entrypoint.sh /entrypoint.sh
+EXPOSE 5000
 
-CMD [ "/entrypoint.sh" ]
+CMD ["npm", "run build"]
+CMD ["npm", "start"]
