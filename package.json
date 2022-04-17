@@ -1,6 +1,6 @@
 {
   "name": "auth-ms-api",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Auth micro service.",
   "main": "index.js",
   "scripts": {

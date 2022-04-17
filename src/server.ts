@@ -11,7 +11,7 @@ const port = config.port;
 export const logger = log4js.getLogger('[Server]');
 
 app.get('/healthcheck', (req, res) => {
-    return res.status(200);
+    return res.status(200).send('clean');
 });
 
 app.listen(port, () => {

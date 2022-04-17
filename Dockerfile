@@ -23,5 +23,10 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["npm", "run build"]
-CMD ["npm", "start"]
+RUN ln -s /app/node_modules/.bin/forever /usr/local/bin
+
+RUN apt-get install -y dos2unix
+RUN dos2unix /usr/local/bin/docker/entrypoint.sh
+ADD docker/entrypoint.sh /entrypoint.sh
+
+CMD [ "./entrypoint.sh" ]
